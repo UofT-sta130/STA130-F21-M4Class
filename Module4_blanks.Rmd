@@ -1,0 +1,98 @@
+---
+title: "Module 4 synchronous class code (for class)"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+Video code and additional template code can be found in the ['Big Doc of Sample Code'](https://jupyter.utoronto.ca/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FUofT-sta130%2FSTA130-F21-module-4-extras&urlpath=rstudio%2F&branch=master). Use that link to pull the file in, it will be called STA130-F21-module-4-extras.
+
+In this code demo, we are going to work through a test for one proportion.
+
+## 1. State your hypotheses
+
+
+## 2. Calculate your test statistic (real world)
+
+### 2A. Load `tidyverse` and data
+
+```{r, message=FALSE}
+library(tidyverse)
+```
+
+### 2B. Save an object that says how many observations are in our sample data
+
+```{r}
+
+```
+
+### 2C. Calculate the test statistic
+
+
+```{r}
+
+```
+
+## 3. Simulate under the null hypothesis
+
+### 3A. Set values for simulation
+
+
+```{r}
+
+```
+
+### 3B. Automate simulation with a `for` loop (simulation world)
+
+```{r}
+
+```
+
+### 3C. Turn results into a data frame so we can use ggplot for plotting
+
+```{r}
+
+```
+
+
+## 4. Evaluate the evidence against the null hypothesis
+
+```{r, eval=FALSE}
+# the value from your null hypothesis
+hypothesized_value <- ______
+
+ggplot(sim_tibble, aes(x = simulated_statistics)) + 
+  geom_histogram(bins = 30, colour = "black") +
+  labs(x="Proportion of students picking C", y="Count", 
+        title = "Simulated sampling distribution under the null hypothesis") +
+  geom_vline(xintercept = hypothesized_value - abs(test_stat-hypothesized_value), 
+             colour = "red") +
+  geom_vline(xintercept = hypothesized_value + abs(test_stat-hypothesized_value), 
+             colour = "blue") +
+  theme_minimal() 
+```
+
+
+```{r}
+
+```
+
+
+## 5. Make a conclusion
+
+### Strength of evidence conclusion
+
+
+### What type of error are we at risk of making if we use a significance level of 0.1?
+
+
+Some guidelines for how small is small? This table tells you how to comment on the **strength of evidence against** $H_0$.
+
+| P-value                  | Evidence                           |
+|--------------------------|------------------------------------|
+| p-value \> 0.10          | no evidence against $H_0$          |
+| 0.05 \< p-value \< 0.10  | weak evidence against $H_0$        |
+| 0.01 \< p-value \< 0.05  | moderate evidence against $H_0$    |
+| 0.001 \< p-value \< 0.01 | strong evidence against $H_0$      |
+| p-value \< 0.001         | very strong evidence against $H_0$ |
+
